@@ -2,17 +2,17 @@
     Forms
     ~~~~~
 """
-from flask_wtf import Form
+from flask_wtf.form import FlaskForm as Form
 from wtforms import BooleanField
-from wtforms import TextField
-from wtforms import TextAreaField
 from wtforms import PasswordField
+from wtforms import StringField as TextField
+from wtforms import TextAreaField
 from wtforms.validators import InputRequired
 from wtforms.validators import ValidationError
 
 from wiki.core import clean_url
-from wiki.web import current_wiki
 from wiki.web import current_users
+from wiki.web import current_wiki
 
 
 class URLForm(Form):

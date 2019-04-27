@@ -2,14 +2,14 @@
     Wiki core
     ~~~~~~~~~
 """
-from collections import OrderedDict
-from io import open
 import os
 import re
+from collections import OrderedDict
+from io import open
 
+import markdown
 from flask import abort
 from flask import url_for
-import markdown
 
 
 def clean_url(url):
@@ -85,7 +85,7 @@ class Processor(object):
 
             :param str text: the text to process
         """
-        self.md = markdown.Markdown([
+        self.md = markdown.Markdown(extensions=[
             'codehilite',
             'fenced_code',
             'meta',

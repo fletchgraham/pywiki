@@ -14,3 +14,11 @@ class WebContentTestCase(WikiBaseTestCase):
         rsp = self.app.get('/')
         assert b"You did not create any content yet." in rsp.data
         assert rsp.status_code == 200
+
+    def test_page_index(self):
+        """
+            Assert /index/ will take you to the page index.
+        """
+        rsp = self.app.get('/index/')
+        assert b'Page Index' in rsp.data
+        assert rsp.status_code == 200

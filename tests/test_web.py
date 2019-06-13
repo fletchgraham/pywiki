@@ -22,3 +22,11 @@ class WebContentTestCase(WikiBaseTestCase):
         rsp = self.app.get('/index/')
         assert b'Page Index' in rsp.data
         assert rsp.status_code == 200
+
+    def test_tags_page(self):
+        """
+            Assert /tags/ will take you to the tags page.
+        """
+        rsp = self.app.get('/tags/')
+        assert b'Index by Tags' in rsp.data
+        assert rsp.status_code == 200

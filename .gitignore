@@ -9,3 +9,5 @@ content/
 *.egg-info
 dist/
 .idea/
+htmlcov/
+.coverage

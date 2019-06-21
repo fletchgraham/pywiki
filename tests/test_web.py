@@ -1,6 +1,16 @@
 from . import WikiBaseTestCase
 
 
+PAGE_CONTENT = u"""\
+title: Test
+tags: one, two, 3, jö
+
+Hello, how are you guys?
+
+**Is it not _magnificent_**?
+"""
+
+
 class WebContentTestCase(WikiBaseTestCase):
     """
         Various test cases around web content.
@@ -30,3 +40,10 @@ class WebContentTestCase(WikiBaseTestCase):
         rsp = self.app.get('/tags/')
         assert b'Index by Tags' in rsp.data
         assert rsp.status_code == 200
+
+    def test_preview(self):
+        rsp = self.app.post(
+            '/preview/',
+            data = {'body' : PAGE_CONTENT}
+            )
+        assert b'Hello, how are you guys?' in rsp.data
